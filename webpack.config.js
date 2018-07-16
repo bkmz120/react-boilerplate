@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
+const path = require('path');
 
 
 module.exports = {
@@ -29,7 +30,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      Common: path.resolve(__dirname, 'app/common/'),
+      Pages: path.resolve(__dirname, 'app/pages/'),
+      Store: path.resolve(__dirname,'app/store/'),
+      Actions: path.resolve(__dirname,'app/actions/'),
+      Constants: path.resolve(__dirname,'app/constants/'),
+    }
   },
   output: {
     path: __dirname + '/app/dist',
